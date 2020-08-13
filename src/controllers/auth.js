@@ -3,6 +3,7 @@ module.exports.signupGet = (req, res) => {
 };
 
 module.exports.signupPost = (req, res) => {
+  const { email, password } = req.body;
   res.send('user signup');
 };
 
@@ -11,5 +12,6 @@ module.exports.loginGet = (req, res) => {
 };
 
 module.exports.loginPost = (req, res) => {
+  const { email, password } = req.body;
   res.send('user login');
 };
