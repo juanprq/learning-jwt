@@ -1,10 +1,16 @@
+const usersRepo = require('../repos/user');
+
 module.exports.signupGet = (req, res) => {
   res.render('auth/signup');
 };
 
-module.exports.signupPost = (req, res) => {
+module.exports.signupPost = async (req, res) => {
   const { email, password } = req.body;
-  res.send('user signup');
+
+  const user = await usersRepo.create({ email, password });
+  res
+    .status(201)
+    .send(user);
 };
 
 module.exports.loginGet = (req, res) => {
