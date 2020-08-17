@@ -7,7 +7,8 @@ module.exports.signupGet = (req, res) => {
 module.exports.signupPost = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await usersRepo.create({ email, password });
+  const userData = await usersRepo.build(email, password);
+  const user = await usersRepo.create(userData);
   res
     .status(201)
     .send(user);
